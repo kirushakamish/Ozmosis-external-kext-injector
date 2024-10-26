@@ -17,6 +17,8 @@
 
 #include "NvramLib.h"
 
+// Получение переменной из NVRAM
+// Get a variable from NVRAM
 EFI_STATUS
 GetNvramVariable(
     IN CHAR16* VariableName,
@@ -25,16 +27,28 @@ GetNvramVariable(
     IN OUT UINTN* DataSize,
     OUT VOID* Data
 ) {
+    if (VariableName == NULL || VendorGuid == NULL || DataSize == NULL) {
+        return EFI_INVALID_PARAMETER; // Проверка на NULL
+    }
+
+    // Вызов метода для получения переменной
     return gRT->GetVariable(VariableName, VendorGuid, Attributes, DataSize, Data);
 }
 
+// Установка переменной в NVRAM
+// Set a variable in NVRAM
 EFI_STATUS
 SetNvramVariable(
     IN CHAR16* VariableName,
     IN EFI_GUID* VendorGuid,
-    IN UINT32       Attributes,
-    IN UINTN        DataSize,
+    IN UINT32 Attributes,
+    IN UINTN DataSize,
     IN VOID* Data
 ) {
+    if (VariableName == NULL || VendorGuid == NULL || DataSize == 0 || (Data == NULL && DataSize != 0)) {
+        return EFI_INVALID_PARAMETER; // Проверка на NULL и нулевой размер
+    }
+
+    // Вызов метода для установки переменной
     return gRT->SetVariable(VariableName, VendorGuid, Attributes, DataSize, Data);
 }

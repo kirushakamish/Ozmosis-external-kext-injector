@@ -1,8 +1,6 @@
 ## @file
 # Copyright (C) 2024, kirusha_kamish.  All rights reserved.
 #
-# Ozmosis external kext injector 
-#
 # Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 #
 # 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
@@ -15,30 +13,22 @@
 #
 ##
 
-[Defines]
-  INF_VERSION                    = 0x00010005
-  BASE_NAME                      = OzmosisExternalKextInjector
-  FILE_GUID                      = 7A731345-9EC5-4274-8308-131AFAB39020
-  MODULE_TYPE                    = UEFI_DRIVER
-  VERSION_STRING                 = 1.0
-  ENTRY_POINT                    = UefiMain
-  SupportedArchitectures         = X64  # Убедитесь, что указана поддерживаемая архитектура
-
-[Sources]
-  Source/OzmosisExternalKextInjector.c
-  Source/NvramLib.c
-  Source/KextGuids.h
-
-[Packages]
+[Library]
   MdePkg/MdePkg.dec
+  OzmosisExternalKextInjector/OzmosisExternalKextInjector.dec
 
-[LibraryClasses]
-  UefiBootServicesTableLib
-  UefiRuntimeServicesTableLib
-  DebugLib
-  BaseLib
-  MemoryAllocationLib
+[Platform]
+  PlatformName = OzmosisExternalKextInjector
+  PlatformVersion = 1.0
+  PlatformGuid = {7A731345-9EC5-4274-8308-131AFAB39020}
+  SupportedArchitectures = X64
 
-[Protocols]
+[Components]
+  OzmosisExternalKextInjector/OzmosisExternalKextInjector.inf
 
-[Depex]
+[BuildOptions]
+  BuildTarget = DEBUG
+  BuildType = RELEASE
+
+[Target]
+  TargetName = OzmosisExternalKextInjector

@@ -23,24 +23,46 @@
 
 // Функция для получения переменной из NVRAM
 // Function to get a variable from NVRAM
+// Parameters:
+//   VariableName - Имя переменной NVRAM для получения
+//                  - NVRAM variable name to retrieve
+//   VendorGuid - GUID вендора, связанный с переменной
+//                - Vendor GUID associated with the variable
+//   Attributes - (необязательный) Указатель на атрибуты переменной
+//                - (optional) Pointer to the variable's attributes
+//   DataSize - Указатель на размер данных переменной
+//              - Pointer to the size of the variable's data
+//   Data - Указатель на область памяти, где будет храниться значение переменной
+//          - Pointer to the memory area to store the variable's value
 EFI_STATUS
 GetNvramVariable(
-	IN CHAR16* VariableName,
-	IN EFI_GUID* VendorGuid,
-	OUT UINT32* Attributes OPTIONAL,
-	IN OUT UINTN* DataSize,
-	OUT VOID* Data
+    IN CHAR16* VariableName,
+    IN EFI_GUID* VendorGuid,
+    OUT UINT32* Attributes OPTIONAL,
+    IN OUT UINTN* DataSize,
+    OUT VOID* Data
 );
 
 // Функция для установки переменной в NVRAM
 // Function to set a variable in NVRAM
+// Parameters:
+//   VariableName - Имя переменной NVRAM для установки
+//                  - NVRAM variable name to set
+//   VendorGuid - GUID вендора, связанный с переменной
+//                - Vendor GUID associated with the variable
+//   Attributes - Атрибуты переменной (например, EFI_VARIABLE_NON_VOLATILE)
+//                - Attributes of the variable (e.g., EFI_VARIABLE_NON_VOLATILE)
+//   DataSize - Размер данных, которые нужно установить
+//              - Size of the data to be set
+//   Data - Указатель на область памяти с данными
+//          - Pointer to the memory area containing the data
 EFI_STATUS
 SetNvramVariable(
-	IN CHAR16* VariableName,
-	IN EFI_GUID* VendorGuid,
-	IN UINT32       Attributes,
-	IN UINTN        DataSize,
-	IN VOID* Data
+    IN CHAR16* VariableName,
+    IN EFI_GUID* VendorGuid,
+    IN UINT32 Attributes,
+    IN UINTN DataSize,
+    IN VOID* Data
 );
 
 #endif // _NVRAM_LIB_H_
