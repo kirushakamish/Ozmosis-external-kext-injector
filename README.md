@@ -1,1 +1,1 @@
-# OzmosisExternalKextInjector
+# Ozmosis external kext injector
