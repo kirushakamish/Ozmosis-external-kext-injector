@@ -2,4 +2,4 @@
 External kext injector that should work with Kernel Collections for Ozmosis. Use at your own risk. I am not responsible for broken equipment
 Credits:
 https://github.com/acidanthera
-For OpenCore libraries 
+Thanks for the OpenCore libraries
